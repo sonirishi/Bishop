@@ -14,7 +14,7 @@ const = 1
 
 input <- as.matrix(cbind(const,x1,x2,x3,x4,x5,x6,x7))
 
-new_input <- as.matrix(cbind(x1,x3,x6,x7))
+new_input <- as.matrix(cbind(x1,x5,x6,x7))
 
 optim_func <- function(input,output){
   cost <- function(beta){
@@ -30,7 +30,8 @@ weight <- optim_func(new_input,vector)
 
 model = lm(vector ~ input + 0)
 
+model = lm(vector ~ new_input + 0)
+
 summary(model)  ### Ultra observation, in case the coefficients are not significant optim creates an issue
 
-model = lm(vector ~ new_input + 0)
 
